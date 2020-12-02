@@ -13,15 +13,16 @@ func calcMultiple(num_list []int, target int, ignore int) int64 {
 	val := make(map[int]bool)
 
 	for i:=0; i<len(num_list); i++ {
+		if ignore == i {
+			continue
+		}
 		pair := target - num_list[i]
 		
 		if _, in_map := val[pair]; in_map {
 			return int64(num_list[i]) * int64(pair)
 		}
 		
-		if ignore != i {
-			val[num_list[i]] = true
-		}
+		val[num_list[i]] = true
 	}
 
 	return 0
