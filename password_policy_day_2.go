@@ -72,6 +72,7 @@ func readInputFile() []string {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer file.Close()
 
 	data, err := ioutil.ReadAll(file)
 	if err != nil {
